@@ -18,6 +18,8 @@ public class Convidado implements Serializable{
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 	
+	private String genero;
+	
 	private String nome;
 	
 	private Integer quantidadeAcompanhantes;
@@ -36,6 +38,14 @@ public class Convidado implements Serializable{
 		this.id = id;
 	}
 	
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -83,6 +93,7 @@ public class Convidado implements Serializable{
 		result = prime * result + ((contatoCelular == null) ? 0 : contatoCelular.hashCode());
 		result = prime * result + ((contatoFixo == null) ? 0 : contatoFixo.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((quantidadeAcompanhantes == null) ? 0 : quantidadeAcompanhantes.hashCode());
@@ -113,6 +124,11 @@ public class Convidado implements Serializable{
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
+		if (genero == null) {
+			if (other.genero != null)
+				return false;
+		} else if (!genero.equals(other.genero))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -133,7 +149,8 @@ public class Convidado implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Convidado [id=" + id + ", nome=" + nome + ", quantidadeAcompanhante=" + quantidadeAcompanhantes
-				+ ", contatoFixo=" + contatoFixo + ", contatoCelular=" + contatoCelular + ", email=" + email + "]";
+		return "Convidado [id=" + id + ", genero=" + genero + ", nome=" + nome + ", quantidadeAcompanhantes="
+				+ quantidadeAcompanhantes + ", contatoFixo=" + contatoFixo + ", contatoCelular=" + contatoCelular
+				+ ", email=" + email + "]";
 	}	
 }

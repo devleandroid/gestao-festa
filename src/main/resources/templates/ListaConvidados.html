@@ -8,13 +8,13 @@
     <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
 </head>
 <body>
-	<h1>Lista de Convidados da Festa</h1>
 	<div class="panel panel-default" style="margin: 10px">
 		<div class="panel-heading">
-			<h1 class="panel-title">Cadastro</h1>
+			<h1 class="panel-title">Lista de Convidados da Festa</h1>
 		</div>
 	<div class="panel-body">
-	<form class="form-inline" method="POST" th:action="@{/convidados}" th:object="${convidado}" style="margin: 20px 0">
+	<h2><strong>Cadastro</strong></h2>
+	<form class="form-inline" method="POST" th:action="@{/convidados/}" th:object="${convidado}" style="margin: 20px 0">
 				<div class="form-group">
 					<input type="text" class="form-control" id="nome"
 						th:field="*{nome}" placeholder="Nome" /> 
@@ -27,13 +27,13 @@
 					<input type="text"
 						class="form-control" id="email"
 						th:field="*{email}" placeholder="Email" />
-
 					<button type="submit" class="btn btn-primary">Adicionar</button>
 				</div>
 	</form>
 	<table class="table">
 		<thead>
 			<tr>
+				<th>Id</th>
 				<th>Nome</th>
 				<th>Acompanhantes</th>
 				<th>Contato</th>
@@ -42,10 +42,12 @@
 		</thead>
 			<tbody>
 				<tr th:each="convidado : ${convidados}">
-					<td th:text="${convidado.nome}"></td>
-					<td th:text="${convidado.quantidadeAcompanhantes}"></td>
-					<td th:text="${convidado.contatoCelular}"></td>
-					<td th:text="${convidado.email}"></td>
+						<td th:text="${convidado.id}"></td>
+						<td th:text="${convidado.nome}"></td>
+						<td th:text="${convidado.quantidadeAcompanhantes}"></td>
+						<td th:text="${convidado.contatoCelular}"></td>
+						<td th:text="${convidado.email}"></td>
+						<td><a type="submit" th:value="convidado.id" th:href="@{/convidados/(id=${convidado.id})}">Excluir</a></td>						
 				</tr>
 			</tbody>
 		</table>
