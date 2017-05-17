@@ -14,7 +14,8 @@
 		</div>
 	<div class="panel-body">
 	<h2><strong>Cadastro</strong></h2>
-	<form class="form-inline" method="POST" th:action="@{/convidados/}" th:object="${convidado}" style="margin: 20px 0">
+		<form class="form-inline" method="POST" th:action="@{/convidados/}" 
+						th:object="${convidado}" style="margin: 20px 0">
 				<div class="form-group">
 					<input type="text" class="form-control" id="nome"
 						th:field="*{nome}" placeholder="Nome" /> 
@@ -29,7 +30,7 @@
 						th:field="*{email}" placeholder="Email" />
 					<button type="submit" class="btn btn-primary">Adicionar</button>
 				</div>
-	</form>
+		</form>
 	<table class="table">
 		<thead>
 			<tr>
@@ -47,7 +48,7 @@
 						<td th:text="${convidado.quantidadeAcompanhantes}"></td>
 						<td th:text="${convidado.contatoCelular}"></td>
 						<td th:text="${convidado.email}"></td>
-						<td><a type="submit" th:value="convidado.id" th:href="@{/convidados/(id=${convidado.id})}">Excluir</a></td>						
+						<td><a th:href="${'/convidados/'+convidado.id}" >Excluir</a></td>						
 				</tr>
 			</tbody>
 		</table>
